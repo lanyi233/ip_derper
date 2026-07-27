@@ -1,0 +1,12 @@
+services:
+  ip_derper:
+    image: ghcr.io/lanyi233/ip_derper:latest
+    restart: unless-stopped
+    ports:
+      - "8443:443/tcp"    # DERP
+      - "5349:3478/udp"   # STUN
+      # - "8080:80/tcp"   # HTTP
+    environment:
+      DERP_HOST: derp.example.com
+    volumes:
+      - ./certs:/certs
